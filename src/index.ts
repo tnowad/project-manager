@@ -8,8 +8,6 @@ interface Quote {
   quote: string;
 }
 
-const data: Quote[] = quotes;
-
 app.get('/api/quote', (_req: Request, res: Response) => {
   const randomQuote: Quote = quotes[Math.floor(Math.random() * quotes.length)];
   res.json(randomQuote);
