@@ -1,5 +1,6 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import quotes from './quotes.json';
+
 const app = express();
 
 interface Quote {
@@ -9,12 +10,12 @@ interface Quote {
 
 const data: Quote[] = quotes;
 
-app.get('/api/quote', (req, res) => {
-  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+app.get('/api/quote', (_req: Request, res: Response) => {
+  const randomQuote: Quote = quotes[Math.floor(Math.random() * quotes.length)];
   res.json(randomQuote);
 });
 
-app.get('/api/quotes', (req, res) => {
+app.get('/api/quotes', (_req: Request, res: Response) => {
   res.json(quotes);
 });
 
